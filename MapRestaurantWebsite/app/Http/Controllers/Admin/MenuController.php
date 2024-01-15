@@ -25,7 +25,7 @@ class MenuController extends Controller
     public function create()
     {
         //
-        return view('admin.menus.create');
+        return view('admin.menus.create')->with('success', 'Menu created successfully');
     }
 
     /**
@@ -70,7 +70,7 @@ class MenuController extends Controller
     {
         //
         $menu->update($request->validated());
-        return to_route('admin.menus.index');
+        return to_route('admin.menus.index')->with('success', 'Menu updated successfully');
     }
 
     /**
@@ -80,6 +80,6 @@ class MenuController extends Controller
     {
         //
         $menu->delete();
-        return to_route('admin.menus.index');
+        return to_route('admin.menus.index')->with('success', 'Menu deleted successfully');
     }
 }

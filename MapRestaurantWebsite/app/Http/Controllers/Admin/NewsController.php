@@ -42,7 +42,7 @@ class NewsController extends Controller
             'pub_date' => $request->pub_date,
         ]);
 
-        return to_route('admin.news.index');
+        return to_route('admin.news.index')->with('success', 'News created successfully');
     }
 
     /**
@@ -69,7 +69,7 @@ class NewsController extends Controller
     {
         //
         $new->update($request->validated());
-        return to_route('admin.news.index');
+        return to_route('admin.news.index')->with('success', 'News updated successfully');
     }
 
     /**
@@ -79,6 +79,6 @@ class NewsController extends Controller
     {
         //
         $new->delete();
-        return to_route('admin.news.index');
+        return to_route('admin.news.index')->with('success', 'News deleted successfully');
     }
 }

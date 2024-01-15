@@ -43,7 +43,7 @@ class ContactController extends Controller
             'reason' => $request->reason,
         ]);
 
-        return to_route('admin.contacts.index');
+        return to_route('admin.contacts.index')->with('success', 'Contact created successfully');
     }
 
     /**
@@ -70,7 +70,7 @@ class ContactController extends Controller
     {
         //
         $contact->update($request->validated());
-        return to_route('admin.contacts.index');
+        return to_route('admin.contacts.index')->with('success', 'Contact updated successfully');
     }
 
     /**
@@ -80,6 +80,6 @@ class ContactController extends Controller
     {
         //
         $contact->delete();
-        return to_route('admin.contacts.index');
+        return to_route('admin.contacts.index')->with('success', 'Contact deleted successfully');
     }
 }

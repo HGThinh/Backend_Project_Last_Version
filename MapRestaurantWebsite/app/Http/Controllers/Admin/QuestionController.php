@@ -25,7 +25,7 @@ class QuestionController extends Controller
     public function create()
     {
         //
-        return view('admin.questions.create');
+        return view('admin.questions.create')->with('success', 'Question created successfully');
     }
 
     /**
@@ -67,7 +67,7 @@ class QuestionController extends Controller
     {
         //
         $question->update($request->validated());
-        return to_route('admin.questions.index');
+        return to_route('admin.questions.index')->with('success', 'Question updated successfully');
     }
 
     /**
@@ -77,6 +77,6 @@ class QuestionController extends Controller
     {
         //
         $question->delete();
-        return to_route('admin.questions.index');
+        return to_route('admin.questions.index')->with('success', 'Question deleted successfully');
     }
 }

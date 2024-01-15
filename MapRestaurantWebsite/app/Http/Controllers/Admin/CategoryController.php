@@ -38,7 +38,7 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return to_route('admin.categories.index');
+        return to_route('admin.categories.index')->with('success', 'Category created successfully');
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoryController extends Controller
     {
         //
         $category->update($request->validated());
-        return to_route('admin.catgories.index')->with('success', 'Category created successfully');
+        return to_route('admin.catgories.index')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -75,6 +75,6 @@ class CategoryController extends Controller
     {
         //
         $category->delete();
-        return to_route('admin.categories.index');
+        return to_route('admin.categories.index')->with('success', 'Category destroy successfully');
     }
 }
