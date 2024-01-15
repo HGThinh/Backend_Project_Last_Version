@@ -1,7 +1,7 @@
 <header class="header_section">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container">
-            <a class="navbar-brand" href="{{ route('test') }}">
+            <a class="navbar-brand" href="">
                 <span>
                     Map Restaurant
                 </span>
@@ -26,7 +26,7 @@
                 </div>
                 <div id="myNav" class="overlay">
                     <div class="overlay-content">
-                        <a href="{{ route('test') }}">Home</a>
+                        <a href="">Home</a>
                         <a href="{{ route('about') }}">About us</a>
                         <a href="{{ route('news') }}">News</a>
                         <a href="{{ route('menu') }}">Menu</a>

@@ -19,16 +19,16 @@
                 <table class="">
                     <thead class="">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="">
                                 Name
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="">
                                 Guest
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="">
                                 Status
                             </th>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="">
                                 Location
                             </th>
                         </tr>

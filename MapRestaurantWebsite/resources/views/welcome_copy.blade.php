@@ -46,6 +46,7 @@
     <div class="hero_area">
 
         <!-- header section strats -->
+        @include('layouts.public_nav')
         <!-- end header section -->
 
         <!-- slider section -->
@@ -197,7 +198,7 @@
                 </div>
             </div>
             <div class="btn-box">
-                <a href="">
+                <a href="{{ route('reservation') }}">
                     Reservation a table now
                 </a>
             </div>
@@ -274,7 +275,7 @@
                             dining experience.
 
                         </p>
-                        <a href="">
+                        <a href="{{ route('about') }}">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -308,7 +309,7 @@
                                 there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum
                                 generators on the Internet tend to repeat predefined
                             </p>
-                            <a href="">
+                            <a href="{{ route('news') }}">
                                 <i class="fa fa-arrow-right" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -400,37 +401,37 @@
                 <div class="info_links">
                     <ul>
                         <li class="active">
-                            <a href="">
+                            <a href="{{ route('home') }}">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ route('about') }}">
                                 About Us
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('news') }}">
                                 Lastest News
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('menu') }}">
                                 Menu
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('reservation') }}">
                                 Reservation
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('FAQ') }}">
                                 FAQ
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('contact') }}">
                                 Contact
                             </a>
                         </li>
@@ -465,42 +466,6 @@
         <!-- footer section -->
 
     </div>
-
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-        @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                @auth
-                    <a href="{{ url('/dashboard') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    <a href="{{ url('/logout') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </a>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                        in</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-
-
-    </div>
-
     <!-- jQery -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <!-- bootstrap js -->
@@ -512,7 +477,6 @@
         integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
     <!-- custom js -->
     <script src="js/custom.js"></script>
-
 
 
 </body>

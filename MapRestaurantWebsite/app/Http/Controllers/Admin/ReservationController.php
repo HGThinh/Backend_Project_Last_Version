@@ -41,6 +41,7 @@ class ReservationController extends Controller
             'tel_number' => $request->tel_number,
             'res_date' => $request->res_date,
             'guest_number' => $request->guest_number,
+            'table_id' => $request->table_id ?? 0,
         ]);
 
         return to_route('admin.reservations.index')->with('success', 'Reservation created successfully');

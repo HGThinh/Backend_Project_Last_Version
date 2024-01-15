@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('tel_number');
             $table->dateTime('res_date');
             $table->integer('guest_number');
+            $table->bigInteger('tabel_id');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Brick\Math\BigInteger;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReservationStoreRequest extends FormRequest
@@ -29,6 +30,7 @@ class ReservationStoreRequest extends FormRequest
             'tel_number' => ['required'],
             'res_date' => ['required', 'date'],
             'guest_number' => ['required'],
+            'table_id' => ['', 'BigInteger'],
         ];
     }
 }
