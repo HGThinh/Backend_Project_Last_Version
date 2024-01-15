@@ -44,10 +44,19 @@
                                     {{ $table->guest_number }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $table->location }}
+                                    {{ $table->location->name }}
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $table->status }}
+                                    {{ $table->status->name }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="{{ route('admin.tables.edit', $table->id) }}">Edit</a>
+                                    <form method="POST" action="{{ route('admin.tables.destroy', $table->id) }}"
+                                        onsubmit="return confirm ('Areyousure?');">
+                                        @csrf
+                                        @method('DELTE')
+                                        <button type="submit">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
