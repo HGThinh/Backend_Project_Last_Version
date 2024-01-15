@@ -1,14 +1,14 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="">
                     {{ __('Reservations') }}
                 </div>
             </div>
@@ -17,37 +17,77 @@
                 <a href="{{ route('admin.reservations.index') }}"> Reservation Index</a>
             </div>
 
-            <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
-                <form method="POST" action="{{ route('admin.reservations.store') }}" enctype="multipart/form-data">
+            <div class="">
+                <form method="POST" action="{{ route('admin.reservations.store') }}">
                     @csrf
-                    <div class="sm:col-span-6">
-                        <label for="title" class="block text-sm font-medium text-gray-700"> Post Title </label>
-                        <div class="mt-1">
-                            <input type="text" id="title" name="title"
-                                class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                    <div class="">
+                        <label for="title" class="">
+                            Create New Reservation
+                        </label>
+
+                        <div class="">
+                            <label for="first_name" class="">
+                                First Name
+                            </label>
+
+                            <input type="text" id="first_name" name="first_name" class="" />
                         </div>
-                    </div>
-                    <div class="sm:col-span-6">
-                        <label for="title" class="block text-sm font-medium text-gray-700"> Post Image </label>
-                        <div class="mt-1">
-                            <input type="file" id="image" name="image"
-                                class="block w-full  appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                        <div class="">
+                            <label for="last_name" class="">
+                                Last Name
+                            </label>
+
+                            <input type="text" id="last_name" name="last_name" class="" />
                         </div>
-                    </div>
-                    <div class="col-span-6">
-                        <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
-                        <select id="country" name="country" autocomplete="country-name"
-                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option>United States</option>
-                            <option>Canada</option>
-                            <option>Mexico</option>
-                        </select>
-                    </div>
-                    <div class="sm:col-span-6 pt-5">
-                        <label for="body" class="block text-sm font-medium text-gray-700">Body</label>
-                        <div class="mt-1">
-                            <textarea id="body" rows="3"
-                                class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
+
+                        <div class="">
+                            <label for="email" class="">
+                                Email
+                            </label>
+
+                            <input type="email" id="email" name="email" class="" />
+                        </div>
+
+                        <div class="">
+                            <label for="tel_number" class="">
+                                Phone Number
+                            </label>
+
+                            <input type="text" id="tel_number" name="tel_number" class="" />
+                        </div>
+
+                        <div class="">
+                            <label for="res_date" class="">
+                                Reservation date
+                            </label>
+
+                            <input type="datetime-local" id="res_date" name="res_date" class="" />
+                        </div>
+
+                        <div class="col-span-6">
+                            <label for="guest_number" class="block text-sm font-medium text-gray-700">
+                                Guest Number
+                            </label>
+                            <input type="number" id="guest_number" name="guest_number" />
+                        </div>
+
+                        <div class="">
+                            <label for="table_id" class="">Table</label>
+                            <select id="table_id" name="table_id" class="">
+                                @foreach ($tables as $table)
+                                    <option value="{{ $table->id }}">{{ $table->name }}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
+                        <div class="">
+                            <label for="status" class="">Status</label>
+                            <select id="status" name="status" class="">
+                                @foreach (App\Enums\TableStatus::cases() as $status)
+                                    <option value="{{ $status->value }}">{{ $status->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                     <button type="submit">Store</button>
