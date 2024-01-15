@@ -11,7 +11,7 @@ class MenuStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,10 @@ class MenuStoreRequest extends FormRequest
     {
         return [
             //
+            'name' => ['required'],
+            'description' => ['required'],
+            'image' => ['required', 'image'],
+            'price' => ['required'],
         ];
     }
 }
