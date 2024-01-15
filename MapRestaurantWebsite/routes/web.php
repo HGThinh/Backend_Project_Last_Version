@@ -1,13 +1,14 @@
 <?php
 
+use App\Http\Controllers\About;
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
-use App\Http\Controllers\Admin\MenuController as AdminMenuController;
-use App\Http\Controllers\Admin\ReservationController as AdminReservationController;
-use App\Http\Controllers\Admin\TableController as AdminTableController;
-use App\Http\Controllers\Admin\NewsController as AdminNewsController;
-use App\Http\Controllers\Admin\QuestionController as AdminQuestionController;
-use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\QuestionController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,16 @@ Route::get('/test', function () {
     return view('test')->name('test');
 });
 
+Route::get('/about', [About::class, 'show'])->name('about');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/news', [NewsController::class, 'show'])->name('news');
+Route::get('/menus', [MenuController::class, 'show'])->name('menus');
+Route::get('/contacts', [ContactController::class, 'show'])->name('contacts');
+Route::get('/questions', [QuestionController::class, 'show'])->name('questions');
+Route::get('/reservations', [ReservationController::class, 'show'])->name('reservations');
+
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -27,13 +38,13 @@ Route::get('/dashboard', function () {
 //Routes for user or admin already logged in
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('/categories', AdminCategoryController::class);
-    Route::resource('/menus', AdminMenuController::class);
-    Route::resource('/tables', AdminTableController::class);
-    Route::resource('/reservations', AdminReservationController::class);
-    Route::resource('/news', AdminNewsController::class);
-    Route::resource('/contacts', AdminContactController::class);
-    Route::resource('/questions', AdminQuestionController::class);
+    Route::resource('/categories', CategoryController::class);
+    Route::resource('/menus', MenuController::class);
+    Route::resource('/tables', TableController::class);
+    Route::resource('/reservations', ReservationController::class);
+    Route::resource('/news', NewsController::class);
+    Route::resource('/contacts', ContactController::class);
+    Route::resource('/questions', QuestionController::class);
 });
 
 Route::middleware('auth')->group(function () {

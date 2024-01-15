@@ -41,7 +41,7 @@ class ReservationController extends Controller
             'tel_number' => $request->tel_number,
             'res_date' => $request->res_date,
             'guest_number' => $request->guest_number,
-            'table_id' => $request->table_id ?? 0,
+            'table_id' => $request->table_id,
         ]);
 
         return to_route('admin.reservations.index')->with('success', 'Reservation created successfully');
@@ -50,9 +50,10 @@ class ReservationController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Reservation $reservation)
     {
         //
+        return view('public.reservation');
     }
 
     /**

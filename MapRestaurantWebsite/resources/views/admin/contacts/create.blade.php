@@ -17,7 +17,7 @@
                 <a href="{{ route('admin.contacts.index') }}"> Contact Index</a>
             </div>
 
-            <div class="">
+            <div class="form-group col-lg-5">
                 <form method="POST" action="{{ route('admin.contacts.store') }}">
                     @csrf
                     <div class="sm:">

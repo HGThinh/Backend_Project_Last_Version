@@ -26,10 +26,10 @@
                                 Guest
                             </th>
                             <th scope="col" class="">
-                                Status
+                                Location
                             </th>
                             <th scope="col" class="">
-                                Location
+                                Status
                             </th>
                         </tr>
                     </thead>

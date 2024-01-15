@@ -19,67 +19,85 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-light">
+<body class="bg-blue">
+    <div class="">
+        <a class="btn btn-secondary " href="" role="button" id="">
+
+            {{ Auth::user()->name }}
+        </a>
+
+        <div class="">
+            <a class="" href="#">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-dropdown-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-dropdown-link>
+                </form>
+            </a>
+        </div>
+    </div>
     <div class="card text-center mt-5">
         <div class="card-header bg-primary text-white">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
-                    <x-admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                        {{ __('Categories') }}
-                    </x-admin-nav-link>
+                    <ul>
+                        <li>
+                            <x-admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                                {{ __('Categories') }}
+                            </x-admin-nav-link>
+                        </li>
 
-                    <x-admin-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.index')">
-                        {{ __('Menus') }}
-                    </x-admin-nav-link>
+                        <li>
+                            <x-admin-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.index')">
+                                {{ __('Menus') }}
+                            </x-admin-nav-link>
+                        </li>
 
-                    <x-admin-nav-link :href="route('admin.tables.index')" :active="request()->routeIs('admin.tables.index')">
-                        {{ __('Tables') }}
-                    </x-admin-nav-link>
+                        <li>
+                            <x-admin-nav-link :href="route('admin.tables.index')" :active="request()->routeIs('admin.tables.index')">
+                                {{ __('Tables') }}
+                            </x-admin-nav-link>
+                        </li>
 
-                    <x-admin-nav-link :href="route('admin.reservations.index')" :active="request()->routeIs('admin.reservations.index')">
-                        {{ __('Reservations') }}
-                    </x-admin-nav-link>
+                        <li>
+                            <x-admin-nav-link :href="route('admin.reservations.index')" :active="request()->routeIs('admin.reservations.index')">
+                                {{ __('Reservations') }}
+                            </x-admin-nav-link>
+                        </li>
 
-                    <x-admin-nav-link :href="route('admin.news.index')" :active="request()->routeIs('admin.news.index')">
-                        {{ __('News') }}
-                    </x-admin-nav-link>
+                        <li>
+                            <x-admin-nav-link :href="route('admin.news.index')" :active="request()->routeIs('admin.news.index')">
+                                {{ __('News') }}
+                            </x-admin-nav-link>
+                        </li>
 
-                    <x-admin-nav-link :href="route('admin.contacts.index')" :active="request()->routeIs('admin.contacts.index')">
-                        {{ __('Contacts') }}
-                    </x-admin-nav-link>
+                        <li>
+                            <x-admin-nav-link :href="route('admin.contacts.index')" :active="request()->routeIs('admin.contacts.index')">
+                                {{ __('Contacts') }}
+                            </x-admin-nav-link>
+                        </li>
 
-                    <x-admin-nav-link :href="route('admin.questions.index')" :active="request()->routeIs('admin.questions.index')">
-                        {{ __('Questions') }}
-                    </x-admin-nav-link>
+                        <li>
+                            <x-admin-nav-link :href="route('admin.questions.index')" :active="request()->routeIs('admin.questions.index')">
+                                {{ __('Questions') }}
+                            </x-admin-nav-link>
+                        </li>
+                    </ul>
+
 
 
                 </div>
             </nav>
         </div>
-        <div class="">
-            <a class="btn btn-secondary " href="" role="button" id="">
 
-                {{ Auth::user()->name }}
-            </a>
-
-            <div class="">
-                <a class="" href="#">
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-
-                        <x-dropdown-link :href="route('logout')"
-                            onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                            {{ __('Log Out') }}
-                        </x-dropdown-link>
-                    </form>
-                </a>
-            </div>
-        </div>
         <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">Dashboard page</h5>
+            <p class="card-text">Click button to return home</p>
+            <a href="/" class="btn btn-primary">Home</a>
         </div>
     </div>
 

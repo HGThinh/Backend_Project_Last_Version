@@ -12,7 +12,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Map Restaurant</title>
+    <title>{{ config('app.name') }}</title>
 
 
     <!-- bootstrap core css -->
@@ -43,11 +43,74 @@
 
 <body>
 
-    <div class="hero_area">
 
+
+    <div class="hero_area">
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container">
+                    <a class="navbar-brand" href="">
+                        <span>
+                            Map Restaurant
+                        </span>
+                    </a>
+                    <div class="" id="">
+                        <div class="User_option">
+                            <a class="" href="">
+                                @if (Route::has('login'))
+                                    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                                        @auth
+                                            <a href="{{ url('/dashboard') }}"
+                                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                                            <a href="{{ url('/logout') }}"
+                                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+
+                                                    <x-dropdown-link :href="route('logout')"
+                                                        onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                                        {{ __('Log Out') }}
+                                                    </x-dropdown-link>
+                                                </form>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('login') }}"
+                                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Login</a>
+
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}"
+                                                    class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                            @endif
+                                        @endauth
+                                    </div>
+                                @endif
+                            </a>
+                        </div>
+                        <div class="custom_menu-btn">
+                            <button onclick="openNav()">
+                                <img src="images/menu.png" alt="">
+                            </button>
+                        </div>
+                        <div id="myNav" class="overlay">
+                            <div class="overlay-content">
+                                <a href="/">Home</a>
+                                <a href="{{ route('about') }}">About us</a>
+                                <a href="{{ route('news') }}">News</a>
+                                <a href="{{ route('menus') }}">Menu</a>
+                                <a href="{{ route('reservations') }}">Reservation</a>
+                                <a href="{{ route('questions') }}">FAQ</a>
+                                <a href="{{ route('contacts') }}">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
         <!-- header section strats -->
         <!-- end header section -->
-
+        @section('contents')
+        @endsection
         <!-- slider section -->
         <section class="slider_section ">
             <div class="container ">
@@ -223,14 +286,14 @@
                                 when looking at its layout. The poin
                             </p>
                             <div class="app_btn_box">
-                                <a href="" class="mr-1">
+                                <a href="#" class="mr-1">
                                     <img src="images/google_play.png" class="box-img" alt="">
                                 </a>
-                                <a href="">
+                                <a href="#">
                                     <img src="images/app_store.png" class="box-img" alt="">
                                 </a>
                             </div>
-                            <a href="" class="download_btn">
+                            <a href="#" class="download_btn">
                                 Download Now
                             </a>
                         </div>
@@ -274,7 +337,7 @@
                             dining experience.
 
                         </p>
-                        <a href="">
+                        <a href="{{ route('about') }}">
                             <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
@@ -354,30 +417,58 @@
                         <div class="carousel-item active">
                             <div class="detail-box">
                                 <h4>
-                                    Virginia
+                                    Feel free to contact us
                                 </h4>
-                                <p>
-                                    Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem
-                                    Ipsum passage, and going through the cites of the word in classical literature,
-                                    discovered the undoubtable Virginia, looked up one of the more obscure Latin words,
-                                    consectetur, from a Lorem Ipsum passage, and
-                                </p>
-                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                <div class="">
+                                    <form method="POST" action="{{ route('admin.contacts.store') }}">
+                                        @csrf
+                                        <div class="sm:">
+                                            <label for="title" class="">
+                                                Create New Contact
+                                            </label>
+
+                                            <div class="">
+                                                <label for="name" class="">
+                                                    Name
+                                                </label>
+
+                                                <input type="text" id="name" name="name"
+                                                    class="" />
+                                            </div>
+
+                                            <div class="">
+                                                <label for="email" class="">
+                                                    Email
+                                                </label>
+
+                                                <input type="email" id="email" name="email"
+                                                    class="" />
+                                            </div>
+
+                                            <div class="">
+                                                <label for="phone" class="">
+                                                    Phone
+                                                </label>
+
+                                                <input type="text" id="phone" name="phone"
+                                                    class="" />
+                                            </div>
+                                            <div class="">
+                                                <label for="reason" class="">
+                                                    Reason
+                                                </label>
+
+                                                <input type="text" id="reason" name="Reason"
+                                                    class="" />
+                                            </div>
+                                        </div>
+                                        <button type="submit">Send</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <a class="carousel-control-prev d-none" href="#customCarousel1" role="button"
-                        data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
-                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
-            </div>
-        </div>
     </section>
 
     <!-- end client section -->
@@ -386,66 +477,77 @@
         <!-- info section -->
         <section class="info_section ">
             <div class="container">
-                <div class="contact_box">
-                    <a href="">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-phone" aria-hidden="true"></i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-envelope" aria-hidden="true"></i>
-                    </a>
-                </div>
+
                 <div class="info_links">
                     <ul>
                         <li class="active">
-                            <a href="">
+                            <a href="/">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="{{ route('about') }}">
                                 About Us
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('news') }}">
                                 Lastest News
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('menus') }}">
                                 Menu
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('reservations') }}">
                                 Reservation
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('questions') }}">
                                 FAQ
                             </a>
                         </li>
                         <li>
-                            <a class="" href="">
+                            <a class="" href="{{ route('contacts') }}">
                                 Contact
                             </a>
                         </li>
+                        <li>
+                            <a class="" href="">
+                                @if (Route::has('login'))
+                                    <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                                        @auth
+                                            <a href="{{ url('/dashboard') }}"
+                                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                                            <a href="{{ url('/logout') }}"
+                                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+
+                                                    <x-dropdown-link :href="route('logout')"
+                                                        onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                                        {{ __('Log Out') }}
+                                                    </x-dropdown-link>
+                                                </form>
+                                            </a>
+                                        @else
+                                            <a href="{{ route('login') }}"
+                                                class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Login</a>
+
+                                            @if (Route::has('register'))
+                                                <a href="{{ route('register') }}"
+                                                    class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                                            @endif
+                                        @endauth
+                                    </div>
+                                @endif
+                            </a>
+                        </li>
                     </ul>
-                </div>
-                <div class="social_box">
-                    <a href="">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                    <a href="">
-                        <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
                 </div>
             </div>
         </section>
@@ -468,35 +570,7 @@
 
     <div
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-        @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                @auth
-                    <a href="{{ url('/dashboard') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                    <a href="{{ url('/logout') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                            this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </a>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                        in</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
 
 
     </div>

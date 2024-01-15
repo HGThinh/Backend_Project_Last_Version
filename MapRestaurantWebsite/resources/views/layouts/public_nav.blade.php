@@ -27,12 +27,12 @@
                 <div id="myNav" class="overlay">
                     <div class="overlay-content">
                         <a href="">Home</a>
-                        <a href="{{ route('about') }}">About us</a>
-                        <a href="{{ route('news') }}">News</a>
-                        <a href="{{ route('menu') }}">Menu</a>
-                        <a href="{{ route('reservation') }}">Reservation</a>
-                        <a href="{{ route('FAQ') }}">FAQ</a>
-                        <a href="{{ route('contact') }}">Contact</a>
+                        <a href="">About us</a>
+                        <a href="">News</a>
+                        <a href="">Menu</a>
+                        <a href="">Reservation</a>
+                        <a href="">FAQ</a>
+                        <a href="">Contact</a>
                     </div>
                 </div>
             </div>
