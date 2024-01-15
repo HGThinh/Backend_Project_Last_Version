@@ -1,14 +1,14 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="">
                     {{ __('Categories') }}
                 </div>
             </div>
@@ -16,22 +16,30 @@
             <div>
                 <a href="{{ route('admin.categories.create') }}"> New Category </a>
             </div>
-            <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div class="">
+                <table class="">
+                    <thead class="">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="">
                                 Category name
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <tr class="">
+                                <th scope="row" class="">
                                     {{ $category->name }}"
                                 </th>
+                                <td class="">
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}">Edit</a>
+                                    <form method="POST" action="{{ route('admin.categories.destroy', $category->id) }}"
+                                        onsubmit="return confirm ('Areyousure?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
 

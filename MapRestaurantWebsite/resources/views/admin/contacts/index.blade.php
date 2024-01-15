@@ -9,48 +9,48 @@
         <div class="">
             <div class="">
                 <div class="">
-                    {{ __('Tables') }}
+                    {{ __('Contacts') }}
                 </div>
             </div>
             <div>
-                <a href="{{ route('admin.tables.create') }}"> New Table </a>
+                <a href="{{ route('admin.contacts.create') }}"> New Contact </a>
             </div>
-            <div class="relative overflow-x-auto">
-                <table class="">
+            <div class="">
+                <contact class="">
                     <thead class="">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="">
                                 Name
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Guest
+                            <th scope="col" class="">
+                                Email
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Status
+                            <th scope="col" class="">
+                                Phone
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Location
+                            <th scope="col" class="">
+                                Reason
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($tables as $table)
+                        @foreach ($contacts as $contact)
                             <tr class="">
                                 <th scope="row" class="">
-                                    {{ $table->name }}
+                                    {{ $contact->name }}
                                 </th>
                                 <td class="">
-                                    {{ $table->guest_number }}
+                                    {{ $contact->email }}
                                 </td>
                                 <td class="">
-                                    {{ $table->location->name }}
+                                    {{ $contact->phone }}
                                 </td>
                                 <td class="">
-                                    {{ $table->status->name }}
+                                    {{ $contact->reason }}
                                 </td>
                                 <td class="">
-                                    <a href="{{ route('admin.tables.edit', $table->id) }}">Edit</a>
-                                    <form method="POST" action="{{ route('admin.tables.destroy', $table->id) }}"
+                                    <a href="{{ route('admin.contacts.edit', $contact->id) }}">Edit</a>
+                                    <form method="POST" action="{{ route('admin.contacts.destroy', $contact->id) }}"
                                         onsubmit="return confirm ('Areyousure?');">
                                         @csrf
                                         @method('DELETE')
@@ -61,7 +61,7 @@
                         @endforeach
 
                     </tbody>
-                </table>
+                </contact>
             </div>
         </div>
     </div>

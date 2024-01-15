@@ -51,17 +51,19 @@
                     <x-admin-nav-link :href="route('admin.questions.index')" :active="request()->routeIs('admin.questions.index')">
                         {{ __('Questions') }}
                     </x-admin-nav-link>
+
+
                 </div>
             </nav>
         </div>
-        <div class="dropdown show mt-3">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="">
+            <a class="btn btn-secondary " href="" role="button" id="">
+
                 {{ Auth::user()->name }}
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">
+            <div class="">
+                <a class="" href="#">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
@@ -72,8 +74,6 @@
                         </x-dropdown-link>
                     </form>
                 </a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
             </div>
         </div>
         <div class="card-body">

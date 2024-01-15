@@ -15,7 +15,7 @@
             <div>
                 <a href="{{ route('admin.tables.create') }}"> New Table </a>
             </div>
-            <div class="relative overflow-x-auto">
+            <div class="">
                 <table class="">
                     <thead class="">
                         <tr>
