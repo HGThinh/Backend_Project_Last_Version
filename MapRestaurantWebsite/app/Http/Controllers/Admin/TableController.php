@@ -55,9 +55,10 @@ class TableController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Table $table)
     {
         //
+        return view('admin.tables.edit', compact('table'));
     }
 
     /**
