@@ -23,6 +23,10 @@ class NewsStoreRequest extends FormRequest
     {
         return [
             //
+            'title' => ['required'],
+            'content' => ['required'],
+            'image_cover' => ['required', 'image'],
+            'pub_date' => ['required'],
         ];
     }
 }

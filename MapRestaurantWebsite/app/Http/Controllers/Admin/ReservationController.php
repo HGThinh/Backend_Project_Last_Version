@@ -40,7 +40,6 @@ class ReservationController extends Controller
             'email' => $request->email,
             'tel_number' => $request->tel_number,
             'res_date' => $request->res_date,
-            'table_id' => $request->table_id,
             'guest_number' => $request->guest_number,
         ]);
 

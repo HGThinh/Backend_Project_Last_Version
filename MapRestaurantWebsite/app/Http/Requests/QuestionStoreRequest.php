@@ -23,6 +23,9 @@ class QuestionStoreRequest extends FormRequest
     {
         return [
             //
+            'name' => ['required'],
+            'email' => ['required'],
+            'question' => ['required'],
         ];
     }
 }

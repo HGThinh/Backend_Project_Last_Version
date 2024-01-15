@@ -23,6 +23,10 @@ class ContactStoreRequest extends FormRequest
     {
         return [
             //
+            'name' => ['required'],
+            'email' => ['required'],
+            'phone' => ['required'],
+            'reason' => ['required'],
         ];
     }
 }
