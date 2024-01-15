@@ -70,10 +70,6 @@
                             </label>
                             <input type="number" id="guest_number" name="guest_number" />
                         </div>
-
-
-
-
                     </div>
                     <button type="submit">Store</button>
                 </form>

@@ -65,7 +65,7 @@ class CategoryController extends Controller
     {
         //
         $category->update($request->validated());
-        return to_route('admin.catgories.index');
+        return to_route('admin.catgories.index')->with('success', 'Category created successfully');
     }
 
     /**

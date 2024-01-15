@@ -84,6 +84,21 @@
     </div>
 
     <main class="container mt-3">
+        @if (session()->has('danger'))
+            <div class="" role="alert">
+                <span>Danger alert</span> {{ session()->get('danger') }}
+            </div>
+        @endif
+        @if (session()->has('success'))
+            <div class="" role="alert">
+                <span>Success alert</span> {{ session()->get('success') }}
+            </div>
+        @endif
+        @if (session()->has('warning'))
+            <div class="" role="alert">
+                <span>Warning alert</span> {{ session()->get('warning') }}
+            </div>
+        @endif
         {{ $slot }}
     </main>
 
