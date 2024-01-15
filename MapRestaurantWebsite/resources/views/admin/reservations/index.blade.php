@@ -1,84 +1,86 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="">
                     {{ __('Reservations') }}
                 </div>
             </div>
             <div>
                 <a href="{{ route('admin.reservations.create') }}"> New Reservation </a>
             </div>
-            <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <div class="">
+                <table class="">
+                    <thead class="">
                         <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Product name
+                            <th scope="col" class="">
+                                First Name
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Color
+                            <th scope="col" class="">
+                                Last Name
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Category
+                            <th scope="col" class="">
+                                Email
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Price
+                            <th scope="col" class="">
+                                Phone
+                            </th>
+                            <th scope="col" class="">
+                                Reservation Date
+                            </th>
+                            <th scope="col" class="">
+                                Table
+                            </th>
+                            <th scope="col" class="">
+                                Guest Number
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
-                            </th>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
-                            </th>
-                            <td class="px-6 py-4">
-                                White
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop PC
-                            </td>
-                            <td class="px-6 py-4">
-                                $1999
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
-                            </th>
-                            <td class="px-6 py-4">
-                                Black
-                            </td>
-                            <td class="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td class="px-6 py-4">
-                                $99
-                            </td>
-                        </tr>
+                        @foreach ($reservations as $reservation)
+                            <tr class="">
+                                <th scope="row" class="">
+                                    {{ $reservation->first_name }}
+                                </th>
+                                <td class="">
+                                    {{ $reservation->location->last_name }}
+                                </td>
+                                <td class="">
+                                    {{ $reservation->location->email }}
+                                </td>
+                                <td class="">
+                                    {{ $reservation->status->tel_number }}
+                                </td>
+                                <td class="">
+                                    {{ $reservation->status->res_date }}
+                                </td>
+                                <td class="">
+                                    {{ $reservation->status->table_id }}
+                                </td>
+                                <td class="">
+                                    {{ $reservation->guest_number }}
+                                </td>
+
+
+                                <td class="">
+                                    <a href="{{ route('admin.reservations.edit', $reservation->id) }}">Edit</a>
+                                    <form method="POST"
+                                        action="{{ route('admin.reservations.destroy', $reservation->id) }}"
+                                        onsubmit="return confirm ('Are you sure?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
             </div>
