@@ -18,7 +18,7 @@
             </div>
 
             <div class="space-y-8 divide-y divide-gray-200 w-1/2 mt-10">
-                <form method="POST" action="{{ route('admin.tables.store') }}" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('admin.tables.store') }}">
                     @csrf
                     <div class="sm:col-span-6">
                         <label for="title" class="block text-sm font-medium text-gray-700">
