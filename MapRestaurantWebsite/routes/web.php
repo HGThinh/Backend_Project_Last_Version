@@ -4,6 +4,19 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FAQController;
+use App\Http\Controllers\FoodController;
+use App\Http\Controllers\Public\AboutController;
+use App\Http\Controllers\Public\ContactController;
+use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\ReservationController;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +36,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//Show if user or admin already logged in
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
 });
