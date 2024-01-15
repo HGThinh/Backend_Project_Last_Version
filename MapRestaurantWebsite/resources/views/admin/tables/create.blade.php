@@ -36,7 +36,7 @@
 
                         <div class="col-span-6">
                             <label for="guest_number" class="block text-sm font-medium text-gray-700">
-                                GuestNumber
+                                Guest Number
                             </label>
                             <input type="number" id="guest_number" name="guest_number" />
                         </div>
