@@ -19,20 +19,23 @@
 <body class="font-sans antialiased">
     <div class="card text-center">
         <div class="card-header">
-            <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('admin.categories.index') }}">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.menus.index') }}">Menus</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="{{ route('admin.tables.index') }}">Tables</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="{{ route('admin.reservations.index') }}">Reservations</a>
-                </li>
-            </ul>
+            <nav>
+                <x-admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
+                    {{ __('Categories') }}
+                </x-admin-nav-link>
+
+                <x-admin-nav-link :href="route('admin.menus.index')" :active="request()->routeIs('admin.menus.index')">
+                    {{ __('Menus') }}
+                </x-admin-nav-link>
+
+                <x-admin-nav-link :href="route('admin.tables.index')" :active="request()->routeIs('admin.tables.index')">
+                    {{ __('Tables') }}
+                </x-admin-nav-link>
+                <x-admin-nav-link :href="route('admin.reservations.index')" :active="request()->routeIs('admin.reservations.index')">
+                    {{ __('Reservations') }}
+                </x-admin-nav-link>
+            </nav>
+
         </div>
         <div class="card-body">
             <h5 class="card-title">Special title treatment</h5>
