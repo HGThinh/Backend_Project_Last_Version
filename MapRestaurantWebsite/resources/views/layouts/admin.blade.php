@@ -17,6 +17,29 @@
 </head>
 
 <body class="font-sans antialiased">
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{ route('admin.categories.index') }}">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('admin.menus.index') }}">Menus</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="{{ route('admin.tables.index') }}">Tables</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="{{ route('admin.reservations.index') }}">Reservations</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
