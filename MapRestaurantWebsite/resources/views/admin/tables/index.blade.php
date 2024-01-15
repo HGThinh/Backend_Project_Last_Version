@@ -5,10 +5,10 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+    <div class="">
+        <div class="">
+            <div class="">
+                <div class="">
                     {{ __('Tables') }}
                 </div>
             </div>
@@ -16,8 +16,8 @@
                 <a href="{{ route('admin.tables.create') }}"> New Table </a>
             </div>
             <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="">
+                    <thead class="">
                         <tr>
                             <th scope="col" class="px-6 py-3">
                                 Name
@@ -35,26 +35,25 @@
                     </thead>
                     <tbody>
                         @foreach ($tables as $table)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <tr class="">
+                                <th scope="row" class="">
                                     {{ $table->name }}
                                 </th>
-                                <td class="px-6 py-4">
+                                <td class="">
                                     {{ $table->guest_number }}
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="">
                                     {{ $table->location->name }}
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="">
                                     {{ $table->status->name }}
                                 </td>
-                                <td class="px-6 py-4">
+                                <td class="">
                                     <a href="{{ route('admin.tables.edit', $table->id) }}">Edit</a>
                                     <form method="POST" action="{{ route('admin.tables.destroy', $table->id) }}"
                                         onsubmit="return confirm ('Areyousure?');">
                                         @csrf
-                                        @method('DELTE')
+                                        @method('DELETE')
                                         <button type="submit">Delete</button>
                                     </form>
                                 </td>
