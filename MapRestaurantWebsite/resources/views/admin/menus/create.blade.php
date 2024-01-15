@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
@@ -14,15 +14,15 @@
             </div>
 
             <div>
-                <a href="{{ route('admin.menus.index') }}"> Table Index</a>
+                <a href="{{ route('admin.menus.index') }}"> Menu Index</a>
             </div>
 
             <div class="">
-                <form method="POST" action="{{ route('admin.menus.store') }}">
+                <form method="POST" action="{{ route('admin.menus.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="sm:">
                         <label for="title" class="">
-                            Create New Table
+                            Create New Menu
                         </label>
 
                         <div class="">

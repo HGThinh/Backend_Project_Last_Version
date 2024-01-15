@@ -9,21 +9,20 @@
         <div class="">
             <div class="">
                 <div class="">
-                    {{ __('Tables') }}
+                    {{ __('Contacts') }}
                 </div>
             </div>
 
             <div>
-                <a href="{{ route('admin.tables.index') }}"> Table Index</a>
+                <a href="{{ route('admin.contacts.index') }}"> Contact Index</a>
             </div>
 
             <div class="">
-                <form method="POST" action="{{ route('admin.tables.update', $table->id) }}">
+                <form method="POST" action="{{ route('admin.contacts.store') }}">
                     @csrf
-                    @method('PUT')
-                    <div class="">
+                    <div class="sm:">
                         <label for="title" class="">
-                            Create New Table
+                            Edit Contact
                         </label>
 
                         <div class="">
@@ -31,37 +30,34 @@
                                 Name
                             </label>
 
-                            <input type="text" id="name" name="name" value="{{ $table->name }}"
-                                class="" />
+                            <input type="text" id="name" name="name" class=""
+                                value="{{ $contact->name }}" />
                         </div>
 
                         <div class="">
-                            <label for="guest_number" class="">
-                                Guest Number
+                            <label for="email" class="">
+                                Email
                             </label>
-                            <input type="number" id="guest_number" name="guest_number"
-                                value="{{ $table->guest_number }}" />
+
+                            <input type="email" id="email" name="email" class=""
+                                value="{{ $contact->email }}" />
                         </div>
 
                         <div class="">
-                            <label for="location" class="">Location</label>
-                            <select id="location" name="location" class="">
-                                @foreach (App\Enums\TableLocation::cases() as $location)
-                                    <option value="{{ $location->value }}" @selected($table->location->value == $location->value)>
-                                        {{ $location->name }}</option>
-                                @endforeach
+                            <label for="phone" class="">
+                                Phone
+                            </label>
 
-                            </select>
+                            <input type="text" id="phone" name="phone" class=""
+                                value="{{ $contact->phone }}" />
                         </div>
-
                         <div class="">
-                            <label for="status" class="">Status</label>
-                            <select id="status" name="status" class="">
-                                @foreach (App\Enums\TableStatus::cases() as $status)
-                                    <option value="{{ $status->value }}" @selected($table->status->value == $status->value)>
-                                        {{ $status->name }}</option>
-                                @endforeach
-                            </select>
+                            <label for="reason" class="">
+                                Reason
+                            </label>
+
+                            <input type="text" id="reason" name="Reason" class=""
+                                value="{{ $contact->reason }}" />
                         </div>
                     </div>
                     <button type="submit">Store</button>

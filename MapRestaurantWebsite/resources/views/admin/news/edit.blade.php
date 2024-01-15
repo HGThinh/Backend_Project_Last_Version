@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
@@ -9,60 +9,59 @@
         <div class="">
             <div class="">
                 <div class="">
-                    {{ __('Tables') }}
+                    {{ __('News') }}
                 </div>
             </div>
 
             <div>
-                <a href="{{ route('admin.tables.index') }}"> Table Index</a>
+                <a href="{{ route('admin.news.index') }}"> News Index</a>
             </div>
 
             <div class="">
-                <form method="POST" action="{{ route('admin.tables.update', $table->id) }}">
+                <form method="POST" action="{{ route('admin.news.store') }}" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
-                    <div class="">
+                    <div class="sm:">
                         <label for="title" class="">
-                            Create New Table
+                            Edit News
                         </label>
 
                         <div class="">
                             <label for="name" class="">
-                                Name
+                                Title
                             </label>
 
-                            <input type="text" id="name" name="name" value="{{ $table->name }}"
-                                class="" />
+                            <input type="text" id="title" name="title" class=""
+                                value="{{ $news->title }}" />
                         </div>
 
                         <div class="">
-                            <label for="guest_number" class="">
-                                Guest Number
+                            <label for="image_cover" class="">
+                                Image Cover
                             </label>
-                            <input type="number" id="guest_number" name="guest_number"
-                                value="{{ $table->guest_number }}" />
+                            <input type="file" id="image_cover" name="image_cover"
+                                value="{{ $news->image_cover }}" />
                         </div>
 
                         <div class="">
-                            <label for="location" class="">Location</label>
-                            <select id="location" name="location" class="">
-                                @foreach (App\Enums\TableLocation::cases() as $location)
-                                    <option value="{{ $location->value }}" @selected($table->location->value == $location->value)>
-                                        {{ $location->name }}</option>
-                                @endforeach
+                            <label for="content" class="">
+                                Content
+                            </label>
 
-                            </select>
+                            <input type="text" id="content" name="content" class=""
+                                value="{{ $news->contnent }}" />
                         </div>
 
                         <div class="">
-                            <label for="status" class="">Status</label>
-                            <select id="status" name="status" class="">
-                                @foreach (App\Enums\TableStatus::cases() as $status)
-                                    <option value="{{ $status->value }}" @selected($table->status->value == $status->value)>
-                                        {{ $status->name }}</option>
-                                @endforeach
-                            </select>
+                            <label for="pub_date" class="">
+                                Public date
+                            </label>
+
+                            <input type="datetime-local" id="pub_date" name="pub_date" class=""
+                                value="{{ $news->pub_date }}" />
                         </div>
+
+
+
                     </div>
                     <button type="submit">Store</button>
                 </form>

@@ -9,20 +9,20 @@
         <div class="">
             <div class="">
                 <div class="">
-                    {{ __('Tables') }}
+                    {{ __('Questions') }}
                 </div>
             </div>
 
             <div>
-                <a href="{{ route('admin.tables.index') }}"> Table Index</a>
+                <a href="{{ route('admin.questions.index') }}"> Question Index</a>
             </div>
 
             <div class="">
-                <form method="POST" action="{{ route('admin.tables.store') }}">
+                <form method="POST" action="{{ route('admin.questions.store') }}">
                     @csrf
                     <div class="sm:">
                         <label for="title" class="">
-                            Create New Table
+                            Create New Question
                         </label>
 
                         <div class="">
@@ -34,30 +34,21 @@
                         </div>
 
                         <div class="">
-                            <label for="guest_number" class="">
-                                Guest Number
+                            <label for="email" class="">
+                                Email
                             </label>
-                            <input type="number" id="guest_number" name="guest_number" />
+
+                            <input type="email" id="email" name="email" class="" />
                         </div>
 
                         <div class="">
-                            <label for="location" class="">Location</label>
-                            <select id="location" name="location" class="">
-                                @foreach (App\Enums\TableLocation::cases() as $location)
-                                    <option value="{{ $location->value }}">{{ $location->name }}</option>
-                                @endforeach
+                            <label for="question" class="">
+                                Question
+                            </label>
 
-                            </select>
+                            <input type="text" id="question" name="question" class="" />
                         </div>
 
-                        <div class="">
-                            <label for="status" class="">Status</label>
-                            <select id="status" name="status" class="">
-                                @foreach (App\Enums\TableStatus::cases() as $status)
-                                    <option value="{{ $status->value }}">{{ $status->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                     <button type="submit">Store</button>
                 </form>

@@ -14,16 +14,15 @@
             </div>
 
             <div>
-                <a href="{{ route('admin.reservations.index') }}"> Table Index</a>
+                <a href="{{ route('admin.reservations.index') }}"> Reservation Index</a>
             </div>
 
             <div class="">
-                <form method="POST" action="{{ route('admin.reservations.update', $table->id) }}">
+                <form method="POST" action="{{ route('admin.reservations.store') }}">
                     @csrf
-                    @method('PUT')
                     <div class="">
                         <label for="title" class="">
-                            Create New Reservation
+                            Edit Reservation
                         </label>
 
                         <div class="">
@@ -70,17 +69,19 @@
                                 value="{{ $reservation->res_date }}" />
                         </div>
 
-                        <div class="col-span-6">
+                        <div class="">
                             <label for="guest_number" class="">
                                 Guest Number
                             </label>
                             <input type="number" id="guest_number" name="guest_number"
-                                value="{{ $reservation->last_name }}" />
+                                value="{{ $reservation->guest_number }}" />
                         </div>
                     </div>
                     <button type="submit">Store</button>
                 </form>
             </div>
+
+
         </div>
     </div>
 </x-admin-layout>

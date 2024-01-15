@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
@@ -9,21 +9,20 @@
         <div class="">
             <div class="">
                 <div class="">
-                    {{ __('Tables') }}
+                    {{ __('Questions') }}
                 </div>
             </div>
 
             <div>
-                <a href="{{ route('admin.tables.index') }}"> Table Index</a>
+                <a href="{{ route('admin.questions.index') }}"> Question Index</a>
             </div>
 
             <div class="">
-                <form method="POST" action="{{ route('admin.tables.update', $table->id) }}">
+                <form method="POST" action="{{ route('admin.questions.store') }}">
                     @csrf
-                    @method('PUT')
-                    <div class="">
+                    <div class="sm:">
                         <label for="title" class="">
-                            Create New Table
+                            Edit Question
                         </label>
 
                         <div class="">
@@ -31,38 +30,28 @@
                                 Name
                             </label>
 
-                            <input type="text" id="name" name="name" value="{{ $table->name }}"
-                                class="" />
+                            <input type="text" id="name" name="name" class=""
+                                value="{{ $question->name }}" />
                         </div>
 
                         <div class="">
-                            <label for="guest_number" class="">
-                                Guest Number
+                            <label for="email" class="">
+                                Email
                             </label>
-                            <input type="number" id="guest_number" name="guest_number"
-                                value="{{ $table->guest_number }}" />
+
+                            <input type="email" id="email" name="email" class=""
+                                value="{{ $question->email }}" />
                         </div>
 
                         <div class="">
-                            <label for="location" class="">Location</label>
-                            <select id="location" name="location" class="">
-                                @foreach (App\Enums\TableLocation::cases() as $location)
-                                    <option value="{{ $location->value }}" @selected($table->location->value == $location->value)>
-                                        {{ $location->name }}</option>
-                                @endforeach
+                            <label for="question" class="">
+                                Question
+                            </label>
 
-                            </select>
+                            <input type="text" id="question" name="question" class=""
+                                value="{{ $question->question }}" />
                         </div>
 
-                        <div class="">
-                            <label for="status" class="">Status</label>
-                            <select id="status" name="status" class="">
-                                @foreach (App\Enums\TableStatus::cases() as $status)
-                                    <option value="{{ $status->value }}" @selected($table->status->value == $status->value)>
-                                        {{ $status->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
                     </div>
                     <button type="submit">Store</button>
                 </form>

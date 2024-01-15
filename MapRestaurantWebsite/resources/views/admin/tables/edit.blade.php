@@ -23,7 +23,7 @@
                     @method('PUT')
                     <div class="">
                         <label for="title" class="">
-                            Create New Table
+                            Edit Table
                         </label>
 
                         <div class="">
