@@ -64,16 +64,20 @@ class TableController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TableStoreRequest $request, Table $table)
     {
         //
+        $table->update($request->validated());
+        return to_route('admin.tables.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Table $table)
     {
         //
+        $table->delete();
+        return to_route('admin.tables.index');
     }
 }
