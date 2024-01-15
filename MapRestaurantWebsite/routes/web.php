@@ -1,26 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\MenuController as AdminMenuController;
 use App\Http\Controllers\Admin\ReservationController as AdminReservationController;
-use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\Admin\TableController as AdminTableController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
-
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\FAQController;
-use App\Http\Controllers\FoodController;
-use App\Http\Controllers\Public\AboutController;
-use App\Http\Controllers\Public\ContactController;
-use App\Http\Controllers\Public\HomeController;
-use App\Http\Controllers\Public\ReservationController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
-
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,10 +19,13 @@ Route::get('/dashboard', function () {
 //Routes for user or admin already logged in
 Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('/categories', CategoryController::class);
-    Route::resource('/menus', MenuController::class);
-    Route::resource('/tables', TableController::class);
+    Route::resource('/categories', AdminCategoryController::class);
+    Route::resource('/menus', AdminMenuController::class);
+    Route::resource('/tables', AdminTableController::class);
     Route::resource('/reservations', AdminReservationController::class);
+    // Route::resource('/news', AdminNewsController::class);
+    // Route::resource('/contacts', AdminConatactController::class);
+    // Route::resource('/questions', AdminQuestionController::class);
 });
 
 Route::middleware('auth')->group(function () {
