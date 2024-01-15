@@ -35,9 +35,6 @@
                                 Reservation Date
                             </th>
                             <th scope="col" class="">
-                                Table
-                            </th>
-                            <th scope="col" class="">
                                 Guest Number
                             </th>
                         </tr>
@@ -59,9 +56,6 @@
                                 </td>
                                 <td class="">
                                     {{ $reservation->status->res_date }}
-                                </td>
-                                <td class="">
-                                    {{ $reservation->status->table_id }}
                                 </td>
                                 <td class="">
                                     {{ $reservation->guest_number }}

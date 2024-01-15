@@ -71,24 +71,9 @@
                             <input type="number" id="guest_number" name="guest_number" />
                         </div>
 
-                        <div class="">
-                            <label for="table_id" class="">Table</label>
-                            <select id="table_id" name="table_id" class="">
-                                @foreach ($tables as $table)
-                                    <option value="{{ $table->id }}">{{ $table->name }}</option>
-                                @endforeach
 
-                            </select>
-                        </div>
 
-                        <div class="">
-                            <label for="status" class="">Status</label>
-                            <select id="status" name="status" class="">
-                                @foreach (App\Enums\TableStatus::cases() as $status)
-                                    <option value="{{ $status->value }}">{{ $status->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+
                     </div>
                     <button type="submit">Store</button>
                 </form>
