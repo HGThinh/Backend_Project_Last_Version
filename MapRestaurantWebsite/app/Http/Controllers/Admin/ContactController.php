@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 
 
@@ -17,7 +17,7 @@ class ContactController extends Controller
     public function index()
     {
         //
-        $tables = Contact::all();
+        $contacts = Contact::all();
         return view('admin.contacts.index', compact('contacts'));
     }
 

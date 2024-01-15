@@ -34,7 +34,7 @@ class MenuController extends Controller
     public function store(MenuStoreRequest $request)
     {
         //
-        $image = $request->file('image')->store('public/categories');
+        $image = $request->file('image')->store('public/images/menus');
 
         Menu::create([
             'name' => $request->name,
@@ -57,24 +57,29 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Menu $menu)
     {
         //
+        return view('admin.menus.edit', compact('menu'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MenuStoreRequest $request, Menu $menu)
     {
         //
+        $menu->update($request->validated());
+        return to_route('admin.menus.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Menu $menu)
     {
         //
+        $menu->delete();
+        return to_route('admin.menus.index');
     }
 }
